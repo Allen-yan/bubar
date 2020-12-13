@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app.views import cal_gas
+from app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^bubar/gas', cal_gas),
+    url(r'^bubar/gas', views.cal_gas),
+    url(r'^bubar/test', views.test),
 ]
