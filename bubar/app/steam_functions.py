@@ -1,6 +1,8 @@
 import math
 
 from .models import Factor
+from . import sqls
+from .utils import db_fetch_one
 
 
 def get_flow_factor(flow_type, pipe_inner_diameter):
@@ -10,10 +12,18 @@ def get_flow_factor(flow_type, pipe_inner_diameter):
     :param pipe_inner_diameter: 管道内径
     :return:
     """
-    f = Factor.objects.filter(
-        flow_type=flow_type, pipe_id_max__lt=pipe_inner_diameter, pipe_id_min__gte=pipe_inner_diameter)
-    if len(f) > 2:
-        raise
+    f_max = db_fetch_one(sqls.max_factor.format(flow_type))
+    f_min = db_fetch_one(sqls.min_factor.format(flow_type))
+
+    if pipe_inner_diameter >= f_max:
+        f = Factor.objects.filter(flow_type=flow_type, pipe_id_max=f_max)
+    elif pipe_inner_diameter < f_min:
+        f = Factor.objects.filter(flow_type=flow_type, pipe_id_min=f_min)
+    else:
+        f = Factor.objects.filter(
+            flow_type=flow_type, pipe_id_max__gt=pipe_inner_diameter, pipe_id_min__lte=pipe_inner_diameter)
+    if not f or len(f) >= 2:
+        raise ValueError("Failed to find factor for {}, {}".format(flow_type, pipe_inner_diameter))
     return f.first().factor
 
 

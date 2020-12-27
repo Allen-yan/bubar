@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^bubar/gas', views.cal_gas),
+    url(r'^bubar/liquid', views.cal_liquid),
+    url(r'^bubar/steam', views.cal_steam),
     url(r'^bubar/test', views.test),
 ]
