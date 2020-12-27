@@ -46,6 +46,7 @@ $(document).ready(function() {
 
                 $("#c_34_9").text(result['dp1']*0.03);
                 $("#c_35_9").text(result['pipe_id']*10);
+                $("#c_49_12").text(result['time']);
             },
             error : function(err) {
                 console.log(err);

@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 FLOW_TYPE = (
@@ -18,13 +20,25 @@ class Factor(models.Model):
         verbose_name_plural = 'F系数'
 
 
-class OperatorHistory(models.Model):
+class OperationHistory(models.Model):
     flow_type = models.CharField('流类型', max_length=10)
 
     project_name = models.CharField("项目名称", max_length=100)
     operator = models.CharField("操作员", max_length=100)
-    page = models.CharField("Page", max_length=100, blank=True, null=True)
-    fluid = models.CharField("Fluid", max_length=100, blank=True, null=True)
-    tag_number = models.CharField("Tag Number", max_length=100, blank=True, null=True)
-    operator = models.CharField("操作员", max_length=100)
-    create_time = models.DateTimeField(auto_created=True)
+    data = models.TextField("操作数据", default={})
+    create_time = models.DateTimeField("操作时间", auto_now_add=True)
+
+    class Meta:
+        verbose_name = '操作历史'
+        verbose_name_plural = '操作历史'
+
+
+def log_history(flow_type, project_name, operator, data):
+    oh = OperationHistory()
+    oh.flow_type = flow_type
+    oh.project_name = project_name
+    oh.operator = operator
+    oh.data = json.dumps(data)
+    oh.save()
+
+    return oh

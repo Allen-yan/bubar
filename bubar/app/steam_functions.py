@@ -21,7 +21,7 @@ def get_flow_factor(flow_type, pipe_inner_diameter):
         f = Factor.objects.filter(flow_type=flow_type, pipe_id_min=f_min)
     else:
         f = Factor.objects.filter(
-            flow_type=flow_type, pipe_id_max__gt=pipe_inner_diameter, pipe_id_min__lte=pipe_inner_diameter)
+            flow_type=flow_type, pipe_id_max__gte=pipe_inner_diameter, pipe_id_min__lte=pipe_inner_diameter)
     if not f or len(f) >= 2:
         raise ValueError("Failed to find factor for {}, {}".format(flow_type, pipe_inner_diameter))
     return f.first().factor

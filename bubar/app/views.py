@@ -4,8 +4,10 @@ import json
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
 
 from .steam_functions import get_flow_factor, cal_gas_dp
+from .models import log_history
 
 logger = logging.getLogger("app")
 
@@ -26,7 +28,7 @@ def gas_form_clean(payload):
         'project_name': (str, True),
         'operator': (str, True),
         'page': (str, True),
-        'fluid_name': (str, True),
+        'fluid': (str, True),
         'tag_number': (str, True),
         'pipe_od': (str, True),
         'pipe_material': (str, True),
@@ -53,12 +55,14 @@ def gas_form_clean(payload):
 
 @csrf_exempt
 def cal_gas(request):
+    flow_type = 'gas'
     if request.method == "POST":
+        logger.debug("cal {} ".format(flow_type))
         form_validate, params = gas_form_clean(request.POST)
         if not form_validate:
             return HttpResponseBadRequest(params)
 
-        flow_factor = get_flow_factor('gas', params['pipe_id'])
+        flow_factor = get_flow_factor(flow_type, params['pipe_id'])
         dp1 = cal_gas_dp(
             params['tf'], params['mw'], params['flow_rate_c'], params['pb'],
             params['pf'], flow_factor, params['tb'], params['pipe_id'])
@@ -67,7 +71,11 @@ def cal_gas(request):
             params['tf'], params['mw'], params['flow_rate_c'], params['pb'],
             params['pf'], flow_factor, params['tb'], params['pipe_id'])
 
-        return HttpResponse(json.dumps({"dp1": dp1, "dp2": dp2, "pipe_id": params['pipe_id'], "time": ""}))
+        l = log_history(flow_type, params['project_name'], params['operator'], params)
+        return HttpResponse(json.dumps(
+            {"dp1": dp1, "dp2": dp2, "pipe_id": params['pipe_id'],
+             "time": timezone.localtime(l.create_time).strftime("%Y-%m-%d %H:%M")}
+        ))
     else:
         return render(request, 'gas.html', {})
 
