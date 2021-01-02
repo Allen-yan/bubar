@@ -32,7 +32,7 @@ $(document).ready(function() {
         }
     }
 
-    $("#confirm_button").click(function (){
+    $("#cal_dp").click(function (){
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -47,6 +47,22 @@ $(document).ready(function() {
                 $("#c_34_9").text(result['dp1']*0.03);
                 $("#c_35_9").text(result['pipe_id']*10);
                 $("#c_49_12").text(result['time']);
+            },
+            error : function(err) {
+                console.log(err);
+                alert(err.responseText);
+            }
+        });
+    });
+
+    $("#cal_qv").click(function (){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/bubar/gas_qv" ,
+            data: $('#gas_form').serialize(),
+            success: function (result) {
+                $("#c_47_12").text(result['qv']);
             },
             error : function(err) {
                 console.log(err);
@@ -78,5 +94,6 @@ $(document).ready(function() {
     $("#c_22_9").on("focusout",{ele_id: "c_25_12", ele_id2: "press_rating"}, focusoutHandler) ;
     $("#c_28_9").on("focusout",{ele_id: "pipe_orientation"}, focusoutHandler) ;
     $("#c_28_12").on("focusout",{ele_id: "dp_conn_type"}, focusoutHandler) ;
+    $("#c_47_9").on("focusout",{ele_id: "dp"}, focusoutHandler) ;
 
 });

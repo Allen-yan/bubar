@@ -596,7 +596,8 @@ body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0
 <body>
 <div>
     <form id="gas_form" onsubmit="return false" action="##" method="post">
-        <input type="button" id="confirm_button" value="确定">
+        <input type="button" id="cal_dp" value="Dp">
+        <input type="button" id="cal_qv" value="Qv">
         <input type="hidden" id="project_name" />
         <input type="hidden" id="operator" />
         <input type="hidden" id="page"/>
@@ -618,6 +619,7 @@ body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0
         <input type="hidden" id="press_rating"/>
         <input type="hidden" id="pipe_orientation"/>
         <input type="hidden" id="dp_conn_type"/>
+        <input type="hidden" id="dp"/>
     </form>
 </div>
 <div>
@@ -1058,12 +1060,8 @@ body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0
 
         </tr>
         <tr class="row47">
-            <td class="column9 style250 s style252" colspan="3"><span
-                    style="color:#000000; font-family:'宋体'; font-size:12pt">输入</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:12pt">Dp</span></td>
-            <td class="column12 style250 s style253" colspan="3"><span
-                    style="color:#000000; font-family:'宋体'; font-size:12pt">算出</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:12pt">Qv</span></td>
+            <td id="c_47_9" class="column9 style250 s style252 editable" colspan="3">输入Dp</td>
+            <td id="c_47_12" class="column12 style250 s style253" colspan="3">Qv</td>
 
 
         </tr>
