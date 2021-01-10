@@ -1,21 +1,18 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<script type="text/javascript" charset="utf8" src="/static/js/jquery-3.5.1.js"></script>
-<script type="text/javascript" charset="utf8" src="/static/js/liquid.js"></script>
-<script type="text/javascript" charset="utf8" >
-
-    var init_data = {{ data }};
-</script>
-<style type="text/css">
-
-@page { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0.2in; }
-body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0.2in; }
-
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="generator" content="PhpSpreadsheet, https://github.com/PHPOffice/PhpSpreadsheet">
+      <title>VELOCITY AVERAGING FLOWMETER</title>
+      <meta name="author" content="Cook" />
+      <meta name="title" content="Bubar" />
+    <style type="text/css">
       html { font-family:Calibri, Arial, Helvetica, sans-serif; font-size:11pt; background-color:white }
       a.comment-indicator:hover + div.comment { background:#ffd; position:absolute; display:block; border:1px solid black; padding:0.5em }
       a.comment-indicator { background:red; display:inline-block; border:1px solid black; width:0.5em; height:0.5em }
       div.comment { display:none }
-      table { border-collapse:collapse; page-break-after:always; margin:auto; }
+      table { border-collapse:collapse; page-break-after:always }
       .gridlines td { border:1px dotted black }
       .gridlines th { border:1px dotted black }
       .b { text-align:center }
@@ -532,7 +529,26 @@ body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0
       th.style252 { vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:none #000000; border-right:1px solid #000000 !important; color:#000000; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
       td.style253 { vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:none #000000; border-right:2px solid #000000 !important; color:#000000; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
       th.style253 { vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:none #000000; border-right:2px solid #000000 !important; color:#000000; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
-
+      table.sheet0 col.col0 { width:7.45555547pt }
+      table.sheet0 col.col1 { width:7.45555547pt }
+      table.sheet0 col.col2 { width:2.03333331pt }
+      table.sheet0 col.col3 { width:45.41111059pt }
+      table.sheet0 col.col4 { width:44.05555505pt }
+      table.sheet0 col.col5 { width:26.43333303pt }
+      table.sheet0 col.col6 { width:42.69999951pt }
+      table.sheet0 col.col7 { width:23.04444418pt }
+      table.sheet0 col.col8 { width:38.63333289pt }
+      table.sheet0 col.col9 { width:33.8888885pt }
+      table.sheet0 col.col10 { width:23.72222195pt }
+      table.sheet0 col.col11 { width:27.78888857pt }
+      table.sheet0 col.col12 { width:33.8888885pt }
+      table.sheet0 col.col13 { width:1.35555554pt }
+      table.sheet0 col.col14 { width:62.35555484pt }
+      table.sheet0 col.col15 { width:43.37777728pt }
+      table.sheet0 col.col16 { width:42pt }
+      table.sheet0 col.col17 { width:42pt }
+      table.sheet0 col.col18 { width:42pt }
+      table.sheet0 col.col19 { width:42pt }
       table.sheet0 tr { height:13.15pt }
       table.sheet0 tr.row0 { height:13.5pt }
       table.sheet0 tr.row1 { height:13.5pt }
@@ -585,509 +601,594 @@ body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0
       table.sheet0 tr.row48 { height:13.5pt }
       table.sheet0 tr.row49 { height:18.75pt }
       table.sheet0 tr.row50 { height:16.5pt }
+      table.sheet0 tr.row51 { height:13.15pt }
+    </style>
+  </head>
 
-
+  <body>
+<style>
+@page { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0.2in; }
+body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0.2in; }
 </style>
-
-<head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>VELOCITY AVERAGING FLOWMETER</title>
-    <meta content="Cook" name="author"/>
-    <meta content="Bubar" name="title"/>
-</head>
-
-<body>
-<div>
-    <form id="liquid_form" onsubmit="return false" action="##" method="post">
-        <input type="button" id="cal_dp" value="Dp">
-        <input type="button" id="cal_qv" value="Qv">
-        <input type="hidden" id="project_name" />
-        <input type="hidden" id="operator" />
-        <input type="hidden" id="page"/>
-        <input type="hidden" id="fluid"/>
-        <input type="hidden" id="tag_number"/>
-        <input type="hidden" id="pipe_od"/>
-        <input type="hidden" id="pipe_id"/>
-        <input type="hidden" id="pipe_material"/>
-        <input type="hidden" id="pipe_direction"/>
-        <input type="hidden" id="pf"/>
-        <input type="hidden" id="tf"/>
-        <input type="hidden" id="flow_rate_min"/>
-        <input type="hidden" id="flow_rate_nor"/>
-        <input type="hidden" id="flow_rate_max"/>
-        <input type="hidden" id="flow_rate_c"/>
-        <input type="hidden" id="mw"/>
-        <input type="hidden" id="tb"/>
-        <input type="hidden" id="pb"/>
-        <input type="hidden" id="press_rating"/>
-        <input type="hidden" id="pipe_orientation"/>
-        <input type="hidden" id="dp_conn_type"/>
-        <input type="hidden" id="dp"/>
-    </form>
-</div>
-<div>
-    <table border="0" cellpadding="0" cellspacing="0" class="sheet0 gridlines" id="sheet0">
+    <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+        <col class="col0">
+        <col class="col1">
+        <col class="col2">
+        <col class="col3">
+        <col class="col4">
+        <col class="col5">
+        <col class="col6">
+        <col class="col7">
+        <col class="col8">
+        <col class="col9">
+        <col class="col10">
+        <col class="col11">
+        <col class="col12">
+        <col class="col13">
+        <col class="col14">
+        <col class="col15">
+        <col class="col16">
+        <col class="col17">
+        <col class="col18">
+        <col class="col19">
         <tbody>
-        <tr class="row0">
+          <tr class="row0">
             <td class="column0 style176 s style177" colspan="4" rowspan="3">Bubar®标巴</td>
-            <td id="c_0_4" class="column4 style62 s style63 editable" colspan="2" rowspan="3">项目名称</td>
-            <td class="column6 style64 s style65" colspan="4">仪表规格书
-                <span style="color:#000000; font-family:'Arial'; font-size:11pt">(</span>
-                <span style="color:#000000; font-family:'宋体'; font-size:11pt">标巴流量探头</span>
-                <span style="color:#000000; font-family:'Arial'; font-size:11pt">)</span></td>
-            <td class="column10 style66 s style67" colspan="2">档案号<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> DOC. No:</span></td>
+            <td class="column4 style62 s style63" colspan="2" rowspan="3">项目名称</td>
+            <td class="column6 style64 s style65" colspan="4">仪表规格书<span style="color:#000000; font-family:'Arial'; font-size:11pt">(</span><span style="color:#000000; font-family:'宋体'; font-size:11pt">标巴流量探头</span><span style="color:#000000; font-family:'Arial'; font-size:11pt">)</span></td>
+            <td class="column10 style66 s style67" colspan="2">档案号<span style="color:#000000; font-family:'Arial'; font-size:9pt"> DOC. No:</span></td>
             <td class="column12 style70 null style72" colspan="3"></td>
-        </tr>
-        <tr class="row1">
+            <td class="column15 style5 null"></td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row1">
             <td class="column6 style68 s style69" colspan="4">DATA SHEET</td>
-            <td class="column10 style32 s style33" colspan="2"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">操作人</span>
-                <span style="color:#000000; font-family:'Arial'; font-size:9pt"> Processed by:</span></td>
-            <td id="c_1_12" class="column12 style45 s style47 editable" colspan="3">Peter</td>
-
-
-        </tr>
-        <tr class="row2">
+            <td class="column10 style32 s style33" colspan="2"><span style="color:#000000; font-family:'宋体'; font-size:9pt">操作人</span><span style="color:#000000; font-family:'Arial'; font-size:9pt"> Processed by:</span></td>
+            <td class="column12 style45 s style47" colspan="3">P<span style="color:#000000; font-family:'宋体'; font-size:9pt">eter</span></td>
+            <td class="column15 style5 null"></td>
+            <td class="column16 style5 null"></td>
+            <td class="column17 style5 null"></td>
+            <td class="column18 style5 null"></td>
+            <td class="column19 style5 null"></td>
+          </tr>
+          <tr class="row2">
             <td class="column6 style55 s style56" colspan="4">(VELOCITY AVERAGING FLOWMETER )</td>
-            <td class="column10 style57 s style58" colspan="2">页数
-                <span style="color:#000000; font-family:'Arial'; font-size:9pt"> PAGE:</span>
-            </td>
-            <td id="c_2_12" class="column12 style59 s style61 editable" colspan="3">第1页 共5页</td>
-
-
-        </tr>
-        <tr class="row3">
-            <td class="column0 style34 s style36" colspan="15">一、概况 General</td>
-
-
-        </tr>
-        <tr class="row4">
+            <td class="column10 style57 s style58" colspan="2">页数<span style="color:#000000; font-family:'Arial'; font-size:9pt"> PAGE:</span></td>
+            <td class="column12 style59 s style61" colspan="3">第1页<span style="color:#000000; font-family:'Arial'; font-size:9pt"> </span><span style="color:#000000; font-family:'宋体'; font-size:9pt">共5页</span></td>
+            <td class="column15 style5 null"></td>
+            <td class="column16 style5 null"></td>
+            <td class="column17 style6 null"></td>
+            <td class="column18 style6 null"></td>
+            <td class="column19 style5 null"></td>
+          </tr>
+          <tr class="row3">
+            <td class="column0 style34 s style36" colspan="15">一、概况  General</td>
+            <td class="column15 style5 null"></td>
+            <td class="column16 style5 null"></td>
+            <td class="column17 style6 null"></td>
+            <td class="column18 style6 null"></td>
+            <td class="column19 style5 null"></td>
+          </tr>
+          <tr class="row4">
             <td class="column0 style187 n style189" colspan="3">1</td>
-            <td class="column3 style92 s style78" colspan="3">介质状态<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> State</span></td>
-            <td class="column6 style73 s style75" colspan="3">介质名称<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Fluid </span></td>
+            <td class="column3 style92 s style78" colspan="3">介质状态<span style="color:#000000; font-family:'Arial'; font-size:9pt"> State</span></td>
+            <td class="column6 style73 s style75" colspan="3">介质名称<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Fluid </span></td>
             <td class="column9 style180 s style182" colspan="3">气体</td>
-            <td id="c_4_12" class="column12 style178 s style179 editable" colspan="3">污氮气</td>
-
-
-        </tr>
-        <tr class="row5">
+            <td class="column12 style178 s style179" colspan="3">污氮气</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16 style3 null"></td>
+            <td class="column17 style6 null"></td>
+            <td class="column18 style6 null"></td>
+            <td class="column19 style3 null"></td>
+          </tr>
+          <tr class="row5">
             <td class="column0 style190 n style192" colspan="3">2</td>
-            <td class="column3 style40 s style44" colspan="3">位号<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tag Number</span></td>
-            <td class="column6 style84 s style85" colspan="3">流程图号<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> P&amp;ID No.</span></td>
-            <td id="c_5_9" class="column9 style86 s style88 editable" colspan="3">FICAS1201</td>
+            <td class="column3 style40 s style44" colspan="3">位号<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tag Number</span></td>
+            <td class="column6 style84 s style85" colspan="3">流程图号<span style="color:#000000; font-family:'Arial'; font-size:9pt"> P&amp;ID No.</span></td>
+            <td class="column9 style86 s style88" colspan="3">FICAS1201</td>
             <td class="column12 style89 null style91" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row6">
+            <td class="column15">&nbsp;</td>
+            <td class="column16 style3 null"></td>
+            <td class="column17 style6 null"></td>
+            <td class="column18 style6 null"></td>
+            <td class="column19 style3 null"></td>
+          </tr>
+          <tr class="row6">
             <td class="column0 style183 n style185" colspan="3">3</td>
-            <td class="column3 style73 s style75" colspan="3">检测位置<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Service </span></td>
-            <td class="column6 style92 s style78" colspan="3">工艺管号<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe No. </span></td>
-            <td id="c_6_9" class="column9 style50 null style52" colspan="3"></td>
+            <td class="column3 style73 s style75" colspan="3">检测位置<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Service </span></td>
+            <td class="column6 style92 s style78" colspan="3">工艺管号<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe No. </span></td>
+            <td class="column9 style50 null style52" colspan="3"></td>
             <td class="column12 style53 null style54" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row7">
+            <td class="column15">&nbsp;</td>
+            <td class="column16 style3 null"></td>
+            <td class="column17 style3 null"></td>
+            <td class="column18 style3 null"></td>
+            <td class="column19 style3 null"></td>
+          </tr>
+          <tr class="row7">
             <td class="column0 style183 n style185" colspan="3">4</td>
-            <td class="column3 style101 s style78" colspan="3">管道外径<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe O.D.</span></td>
-            <td class="column6 style92 s style78" colspan="3">管道内径<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe I.D.mm</span></td>
-            <td id="c_7_9" class="column9 style102 n style81 editable" colspan="3">813</td>
-            <td id="c_7_12" class="column12 style103 s style105 editable" colspan="3">D</td>
-
-        </tr>
-        <tr class="row8">
+            <td class="column3 style101 s style78" colspan="3">管道外径<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe O.D.</span></td>
+            <td class="column6 style92 s style78" colspan="3">管道内径<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe I.D.mm</span></td>
+            <td class="column9 style102 n style81" colspan="3">813</td>
+            <td class="column12 style103 s style105" colspan="3">D</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row8">
             <td class="column0 style193 n style195" colspan="3">5</td>
-            <td class="column3 style73 s style75" colspan="3">管道材质<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe Mat'l </span></td>
-            <td class="column6 style76 s style78" colspan="3">管道走向<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe Direction </span></td>
-            <td id="c_8_9" class="column9 style79 s style81 editable" colspan="3">碳钢</td>
-            <td id="c_8_12" class="column12 style82 s style83 editable" colspan="3">水平</td>
-
-        </tr>
-        <tr class="row9">
-            <td class="column0 style37 s style39" colspan="15">二、工艺条件 Process Conditions</td>
-
-
-        </tr>
-        <tr class="row10">
+            <td class="column3 style73 s style75" colspan="3">管道材质<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe Mat'l </span></td>
+            <td class="column6 style76 s style78" colspan="3">管道走向<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe Direction </span></td>
+            <td class="column9 style79 s style81" colspan="3">碳钢</td>
+            <td class="column12 style82 s style83" colspan="3">水平</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row9">
+            <td class="column0 style37 s style39" colspan="15">二、工艺条件  Process Conditions</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row10">
             <td class="column0 style187 n style189" colspan="3">6</td>
-            <td class="column3 style93 s style95" colspan="3">操作压力<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Oper. Press. KPa(g)</span></td>
-            <td class="column6 style96 s style95" colspan="3">设计压力<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Design Press. MPa(g)</span></td>
-            <td id="c_10_9" class="column9 style97 s style99 editable" colspan="3">Pf</td>
+            <td class="column3 style93 s style95" colspan="3">操作压力<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Oper. Press. KPa(g)</span></td>
+            <td class="column6 style96 s style95" colspan="3">设计压力<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Design Press. MPa(g)</span></td>
+            <td class="column9 style97 s style99" colspan="3">Pf</td>
             <td class="column12 style97 null style100" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row11">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row11">
             <td class="column0 style183 n style185" colspan="3">7</td>
-            <td class="column3 style106 s style75" colspan="3">操作温度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Oper. Temp. </span><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">℃</span><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt"> </span></td>
-            <td class="column6 style107 s style109" colspan="3">设计温度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Design Temp</span><span
-                    style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:9pt">. </span><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">℃ </span></td>
-            <td id="c_11_9" class="column9 style102 s style81 editable" colspan="3">Tf</td>
+            <td class="column3 style106 s style75" colspan="3">操作温度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Oper. Temp. </span><span style="color:#000000; font-family:'宋体'; font-size:9pt">℃</span><span style="color:#000000; font-family:'宋体'; font-size:9pt"> </span></td>
+            <td class="column6 style107 s style109" colspan="3">设计温度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Design Temp</span><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:9pt">. </span><span style="color:#000000; font-family:'宋体'; font-size:9pt">℃ </span></td>
+            <td class="column9 style102 s style81" colspan="3">Tf</td>
             <td class="column12 style102 null style83" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row12">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row12">
             <td class="column0 style183 n style185" colspan="3">8</td>
-            <td class="column3 style40 s style42" colspan="3"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">管道</span><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">流量</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Flow Rate</span></td>
-            <td class="column6 style4 s">单位<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Unit</span>
-            </td>
-            <td class="column7 style50 s style51" colspan="2">最小<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Min. Flow </span></td>
-            <td class="column9 style110 s style111" colspan="2">正常<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Nor. Flow </span></td>
-            <td class="column11 style112 s style114" colspan="3">最大<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Max. Flow </span></td>
-            <td class="column14 style8 s"><span style="color:#000000; font-family:'宋体'; font-size:9pt">刻度</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt">  Scale.Flow</span></td>
-
-
-        </tr>
-        <tr class="row13">
+            <td class="column3 style40 s style42" colspan="3"><span style="color:#000000; font-family:'宋体'; font-size:9pt">管道</span><span style="color:#000000; font-family:'宋体'; font-size:9pt">流量</span><span style="color:#000000; font-family:'Arial'; font-size:9pt"> Flow Rate</span></td>
+            <td class="column6 style4 s">单位<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Unit</span></td>
+            <td class="column7 style50 s style51" colspan="2">最小<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Min. Flow </span></td>
+            <td class="column9 style110 s style111" colspan="2">正常<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Nor. Flow </span></td>
+            <td class="column11 style112 s style114" colspan="3">最大<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Max. Flow </span></td>
+            <td class="column14 style8 s"><span style="color:#000000; font-family:'宋体'; font-size:9pt">刻度</span><span style="color:#000000; font-family:'Arial'; font-size:9pt">  Scale.Flow</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row13">
             <td class="column0 style183 n style185" colspan="3">9</td>
-            <td class="column3 style43 s style44" colspan="3">Nm3/h(<span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">气体</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt">Gas)</span></td>
+            <td class="column3 style43 s style44" colspan="3">Nm3/h(<span style="color:#000000; font-family:'宋体'; font-size:9pt">气体</span><span style="color:#000000; font-family:'Arial'; font-size:9pt">Gas)</span></td>
             <td class="column6 style7 s">Nm3/h</td>
-            <td id="c_13_7" class="column7 style116 s style116 editable" colspan="2">MIN</td>
-            <td id="c_13_9" class="column9 style115 s style115 editable" colspan="2">A</td>
-            <td id="c_13_11" class="column11 style117 s style119 editable" colspan="3">B</td>
-            <td id="c_13_14" class="column14 style9 s editable">C</td>
-
-
-        </tr>
-        <tr class="row14">
+            <td class="column7 style116 s style116" colspan="2">MIN</td>
+            <td class="column9 style115 s style115" colspan="2">A</td>
+            <td class="column11 style117 s style119" colspan="3">B</td>
+            <td class="column14 style9 s">C</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row14">
             <td class="column0 style183 n style185" colspan="3">10</td>
-            <td class="column3 style73 s style75" colspan="3">操作密度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Oper. Density kg/m3 </span></td>
-            <td class="column6 style92 s style78" colspan="3">标准密度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Std. Density kg/Nm3 </span></td>
+            <td class="column3 style73 s style75" colspan="3">操作密度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Oper. Density kg/m3 </span></td>
+            <td class="column6 style92 s style78" colspan="3">标准密度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Std. Density kg/Nm3 </span></td>
             <td class="column9 style102 null style81" colspan="3"></td>
             <td class="column12 style102 null style83" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row15">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row15">
             <td class="column0 style183 n style185" colspan="3">11</td>
-            <td class="column3 style73 s style75" colspan="3">运动黏度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Kin Visc(mm2/s) </span></td>
-            <td class="column6 style92 s style78" colspan="3">动力黏度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Dyn Visc(mPa.s) </span></td>
+            <td class="column3 style73 s style75" colspan="3">运动黏度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Kin Visc(mm2/s) </span></td>
+            <td class="column6 style92 s style78" colspan="3">动力黏度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Dyn Visc(mPa.s) </span></td>
             <td class="column9 style53 null style52" colspan="3"></td>
             <td class="column12 style53 null style54" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row16">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row16">
             <td class="column0 style183 n style185" colspan="3">12</td>
-            <td class="column3 style101 s style78" colspan="3">绝热指数<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Spec. Heat Ratio Cp/Cv</span></td>
-            <td class="column6 style92 s style78" colspan="3">压缩系数<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Comp. Factor </span></td>
+            <td class="column3 style101 s style78" colspan="3">绝热指数<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Spec. Heat Ratio Cp/Cv</span></td>
+            <td class="column6 style92 s style78" colspan="3">压缩系数<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Comp. Factor </span></td>
             <td class="column9 style53 null style52" colspan="3"></td>
             <td class="column12 style53 null style54" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row17">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row17">
             <td class="column0 style183 n style185" colspan="3">13</td>
-            <td class="column3 style126 s style75" colspan="3">分子量<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Molecular Weight </span></td>
-            <td class="column6 style92 s style78" colspan="3">相对湿度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Relative Humidity</span></td>
-            <td id="c_17_9" class="column9 style102 s style81 editable" colspan="3">Mw</td>
+            <td class="column3 style126 s style75" colspan="3">分子量<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Molecular Weight </span></td>
+            <td class="column6 style92 s style78" colspan="3">相对湿度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Relative Humidity</span></td>
+            <td class="column9 style102 s style81" colspan="3">Mw</td>
             <td class="column12 style53 null style54" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row18">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row18">
             <td class="column0 style193 n style195" colspan="3">14</td>
-            <td class="column3 style48 s style49" colspan="3">标况温度 Base Temp.℃</td>
-            <td class="column6 style127 s style128" colspan="3">标况压力 Base Press. KPa</td>
-            <td id="c_18_9" class="column9 style129 s style129 editable" colspan="3">Tb</td>
-            <td id="c_18_12" class="column12 style129 s style130 editable" colspan="3">Pb</td>
-
-
-        </tr>
-        <tr class="row19">
-            <td class="column0 style19 s style21" colspan="15">三、流量计 Meter</td>
-
-
-        </tr>
-        <tr class="row20">
+            <td class="column3 style48 s style49" colspan="3">标况温度  Base Temp.℃  </td>
+            <td class="column6 style127 s style128" colspan="3">标况压力  Base Press. KPa</td>
+            <td class="column9 style129 s style129" colspan="3">Tb</td>
+            <td class="column12 style129 s style130" colspan="3">Pb</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row19">
+            <td class="column0 style19 s style21" colspan="15">三、流量计  Meter</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row20">
             <td class="column0 style187 n style189" colspan="3">15</td>
-            <td class="column3 style120 s style122" colspan="6">标巴型号<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Model</span></td>
+            <td class="column3 style120 s style122" colspan="6">标巴型号<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Model</span></td>
             <td class="column9 style102 null style83" colspan="6"></td>
-
-
-        </tr>
-        <tr class="row21">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row21">
             <td class="column0 style183 n style185" colspan="3">16</td>
-            <td class="column3 style131 s style133" colspan="6">形式<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Type</span></td>
+            <td class="column3 style131 s style133" colspan="6">形式<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Type</span></td>
             <td class="column9 style134 s style136" colspan="6">法兰连接</td>
-
-
-        </tr>
-        <tr class="row22">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row22">
             <td class="column0 style183 n style185" colspan="3">17</td>
-            <td class="column3 style73 s style138" colspan="3">压力等级<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pressure Rating </span></td>
-            <td class="column6 style92 s style140" colspan="3">适用温度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Allow. Oper. Temp.</span><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">℃</span></td>
-            <td id="c_22_9" class="column9 style102 s style81 editable" colspan="3">150#</td>
-            <td class="column12 style53 s style54" colspan="3">232<span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">℃</span></td>
-
-
-        </tr>
-        <tr class="row23">
+            <td class="column3 style73 s style138" colspan="3">压力等级<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pressure Rating </span></td>
+            <td class="column6 style92 s style140" colspan="3">适用温度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Allow. Oper. Temp.</span><span style="color:#000000; font-family:'宋体'; font-size:9pt">℃</span></td>
+            <td class="column9 style102 s style81" colspan="3">150#</td>
+            <td class="column12 style53 s style54" colspan="3">232<span style="color:#000000; font-family:'宋体'; font-size:9pt">℃</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row23">
             <td class="column0 style183 n style185" colspan="3">18</td>
-            <td class="column3 style40 s style42" colspan="3">安装方式<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Mounting Type</span></td>
-            <td class="column6 style40 s style42" colspan="3">精度<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Accuracy</span></td>
+            <td class="column3 style40 s style42" colspan="3">安装方式<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Mounting Type</span></td>
+            <td class="column6 style40 s style42" colspan="3">精度<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Accuracy</span></td>
             <td class="column9 style50 s style142" colspan="3">法兰连接</td>
             <td class="column12 style143 s style145" colspan="3">±0.5%</td>
-
-
-        </tr>
-        <tr class="row24">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row24">
             <td class="column0 style183 n style185" colspan="3">19</td>
-            <td class="column3 style40 s style42" colspan="3">取压连接形式<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Conn. Type</span></td>
-            <td class="column6 style40 s style42" colspan="3">取压连接尺寸<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Size</span></td>
+            <td class="column3 style40 s style42" colspan="3">取压连接形式<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Conn. Type</span></td>
+            <td class="column6 style40 s style42" colspan="3">取压连接尺寸<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Size</span></td>
             <td class="column9 style50 null style142" colspan="3"></td>
             <td class="column12 style53 null style54" colspan="3"></td>
-
-
-        </tr>
-        <tr class="row25">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row25">
             <td class="column0 style183 n style185" colspan="3">20</td>
-            <td class="column3 style40 s style42" colspan="3">取压法兰标准<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flange STD.</span></td>
-            <td class="column6 style40 s style42" colspan="3">取压法兰等级<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flange Rating</span></td>
+            <td class="column3 style40 s style42" colspan="3">取压法兰标准<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flange STD.</span></td>
+            <td class="column6 style40 s style42" colspan="3">取压法兰等级<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flange Rating</span></td>
             <td class="column9 style53 s style52" colspan="3">ANSI</td>
-            <td id="c_25_12" class="column12 style102 s style83" colspan="3">150#</td>
-
-
-        </tr>
-        <tr class="row26">
+            <td class="column12 style102 s style83" colspan="3">150#</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row26">
             <td class="column0 style183 n style185" colspan="3">21</td>
-            <td class="column3 style40 s style42" colspan="3">取压法兰材质<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flange Mat'l</span></td>
-            <td class="column6 style40 s style42" colspan="3">取压法兰密封面<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flg. Facing</span></td>
+            <td class="column3 style40 s style42" colspan="3">取压法兰材质<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flange Mat'l</span></td>
+            <td class="column6 style40 s style42" colspan="3">取压法兰密封面<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Tap Flg. Facing</span></td>
             <td class="column9 style53 s style52" colspan="3">316L</td>
             <td class="column12 style53 s style54" colspan="3">CL150 RF HG/T20631B</td>
-
-
-        </tr>
-        <tr class="row27">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row27">
             <td class="column0 style183 n style185" colspan="3">22</td>
-            <td class="column3 style73 s style138" colspan="3">本体材质<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Body Mat'l</span></td>
-            <td class="column6 style92 s style140" colspan="3">检测元件材质<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Element Mat'l</span></td>
+            <td class="column3 style73 s style138" colspan="3">本体材质<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Body Mat'l</span></td>
+            <td class="column6 style92 s style140" colspan="3">检测元件材质<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Element Mat'l</span></td>
             <td class="column9 style53 s style52" colspan="3">316L</td>
             <td class="column12 style53 s style54" colspan="3">316L</td>
-
-
-        </tr>
-        <tr class="row28">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row28">
             <td class="column0 style183 n style185" colspan="3">23</td>
-            <td class="column3 style40 s style42" colspan="3">工艺管道方向<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe Orientation</span></td>
-            <td class="column6 style40 s style42" colspan="3">差压接口形式<span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> D.P. Conn. Type</span></td>
-            <td id="c_28_9" class="column9 style79 s style147 editable" colspan="3">水平</td>
-            <td id="c_28_12" class="column12 style79 s style148 editable" colspan="3">焊接</td>
-
-
-        </tr>
-        <tr class="row29">
+            <td class="column3 style40 s style42" colspan="3">工艺管道方向<span style="color:#000000; font-family:'Arial'; font-size:9pt"> Pipe Orientation</span></td>
+            <td class="column6 style40 s style42" colspan="3">差压接口形式<span style="color:#000000; font-family:'Arial'; font-size:9pt"> D.P. Conn. Type</span></td>
+            <td class="column9 style79 s style147" colspan="3">水平</td>
+            <td class="column12 style79 s style148" colspan="3">焊接</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row29">
             <td class="column0 style183 n style185" colspan="3">24</td>
             <td class="column3 style84 s style153" colspan="6">变送器品牌 Transmitter Brand</td>
             <td class="column9 style102 null style83" colspan="6"></td>
-
-
-        </tr>
-        <tr class="row30">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row30">
             <td class="column0 style183 n style185" colspan="3">25</td>
             <td class="column3 style84 s style153" colspan="6">变送器型号 Transmitter Model</td>
             <td class="column9 style102 null style83" colspan="6"></td>
-
-
-        </tr>
-        <tr class="row31">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row31">
             <td class="column0 style19 s style21" colspan="15">四、计算结果</td>
-
-
-        </tr>
-        <tr class="row32">
-            <td class="column0 style158 s style160" colspan="6"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">满刻度流量</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Flowmeter Scale</span></td>
-            <td class="column6 style22 s style23" colspan="3"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">最小流量</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Min. Flow </span></td>
-            <td id="c_32_9" class="column9 style26 s style26" colspan="3">C</td>
-            <td id="c_32_12" class="column12 style27 s style29" colspan="3">MIN</td>
-
-
-        </tr>
-        <tr class="row33">
-            <td class="column0 style197 s style199" colspan="6"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">满刻度差压</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Full Scale Diff. Press</span></td>
-            <td id="c_33_6" class="column6 style24 s style25" colspan="3">最小差压Min.Diff.Press. kPa</td>
-            <td id="c_33_9" class="column9 style27 s style30" colspan="3">公式计算结果Dp1</td>
-            <td id="c_33_12" class="column12 style27 s style29" colspan="3">公式计算结果Dp2</td>
-
-
-        </tr>
-        <tr class="row34">
-            <td class="column0 style22 s style22" colspan="9"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">最大压力损失</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt"> Calc. Press. Drop</span></td>
-            <td id="c_34_9" class="column9 style123 s style125" colspan="6">Dp1*0.03</td>
-
-
-        </tr>
-        <tr class="row35">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row32">
+            <td class="column0 style158 s style160" colspan="6"><span style="color:#000000; font-family:'宋体'; font-size:9pt">满刻度流量</span><span style="color:#000000; font-family:'Arial'; font-size:9pt"> Flowmeter Scale</span></td>
+            <td class="column6 style22 s style23" colspan="3"><span style="color:#000000; font-family:'宋体'; font-size:9pt">最小流量</span><span style="color:#000000; font-family:'Arial'; font-size:9pt"> Min. Flow </span></td>
+            <td class="column9 style26 s style26" colspan="3">C</td>
+            <td class="column12 style27 s style29" colspan="3">M<span style="color:#000000; font-family:'宋体'; font-size:9pt">IN</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row33">
+            <td class="column0 style197 s style199" colspan="6"><span style="color:#000000; font-family:'宋体'; font-size:9pt">满刻度差压</span><span style="color:#000000; font-family:'Arial'; font-size:9pt"> Full Scale Diff. Press</span></td>
+            <td class="column6 style24 s style25" colspan="3">最小差压Min.Diff.Press. kPa</td>
+            <td class="column9 style27 s style30" colspan="3">公式计算结果Dp1</td>
+            <td class="column12 style27 s style29" colspan="3">公式计算结果Dp2</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row34">
+            <td class="column0 style22 s style22" colspan="9"><span style="color:#000000; font-family:'宋体'; font-size:9pt">最大压力损失</span><span style="color:#000000; font-family:'Arial'; font-size:9pt"> Calc. Press. Drop</span></td>
+            <td class="column9 style123 s style125" colspan="6">Dp1*0.03</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row35">
             <td class="column0 style23 s style23" colspan="9">直管段长度 Straight Run Length</td>
-            <td id="c_35_9" class="column9 style123 s style125" colspan="6">D*10</td>
-
-
-        </tr>
-        <tr class="row36">
+            <td class="column9 style123 s style125" colspan="6">D<span style="color:#000000; font-family:'宋体'; font-size:9pt">*10</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row36">
             <td class="column0 style186 s style186" colspan="9">最大允许流量 Max.Allowable Flow</td>
-            <td id="c_36_9" class="column9 style123 s style125" colspan="6">G</td>
-
-
-        </tr>
-        <tr class="row37">
-            <td class="column0 style31 s style23" colspan="9">五、计算公式 Calculation Formula</td>
-            <td class="column9 style48 s style161" colspan="6">六、参数汇总 Parameter Summary</td>
-
-
-        </tr>
-        <tr class="row38">
-            <td class="column0 style10 null style18" colspan="9" rowspan="12">
-                <img src="/static/png/gas_f.png" style="max-width:100%;width:348px;"/>
-            </td>
+            <td class="column9 style123 s style125" colspan="6">G</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row37">
+            <td class="column0 style31 s style23" colspan="9">五、计算公式  Calculation   Formula</td>
+            <td class="column9 style48 s style161" colspan="6">六、参数汇总  Parameter Summary</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row38">
+            <td class="column0 style10 null style18" colspan="9" rowspan="12"><img src="/static/png/f1.jpeg" style="max-width:100%;width:348px;" /></td>
             <td class="column9 style157 s style155" colspan="3">F流量系数</td>
-            <td id="c_38_12" class="column12 style149 s style151" colspan="3">根据管道内径数据库提取</td>
-
-
-        </tr>
-        <tr class="row39">
-            <td class="column9 style154 s style155" colspan="3">D<span
-                    style="color:#333399; font-family:'宋体'; font-size:9pt">管道内径</span></td>
-            <td id="c_39_12" class="column12 style26 s style156" colspan="3">D</td>
-
-
-        </tr>
-        <tr class="row40">
-            <td class="column9 style154 s style155" colspan="3">Mw<span
-                    style="color:#333399; font-family:'宋体'; font-size:9pt">分子量</span><span
-                    style="color:#333399; font-family:'Arial'; font-size:9pt"> </span></td>
-            <td id="c_40_12" class="column12 style26 s style156" colspan="3">Mw</td>
-
-
-        </tr>
-        <tr class="row41">
+            <td class="column12 style149 s style151" colspan="3">根据管道内径数据库提取</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row39">
+            <td class="column9 style154 s style155" colspan="3">D<span style="color:#333399; font-family:'宋体'; font-size:9pt">管道内径</span></td>
+            <td class="column12 style26 s style156" colspan="3">D</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row40">
+            <td class="column9 style154 s style155" colspan="3">Mw<span style="color:#333399; font-family:'宋体'; font-size:9pt">分子量</span><span style="color:#333399; font-family:'Arial'; font-size:9pt"> </span></td>
+            <td class="column12 style26 s style156" colspan="3">Mw</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row41">
             <td class="column9 style157 s style165" colspan="3">Tf操作温度</td>
-            <td id="c_41_12" class="column12 style26 s style156" colspan="3">Tf</td>
-
-
-        </tr>
-        <tr class="row42">
+            <td class="column12 style26 s style156" colspan="3">Tf</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row42">
             <td class="column9 style166 s style168" colspan="3">Pf操作压力</td>
-            <td id="c_42_12" class="column12 style26 s style156" colspan="3">Pf</td>
-
-
-        </tr>
-        <tr class="row43">
-            <td class="column9 style169 s style171" colspan="3">Tb<span
-                    style="color:#333399; font-family:'宋体'; font-size:9pt">标况温度</span></td>
-            <td id="c_43_12" class="column12 style26 s style156" colspan="3">Tb</td>
-
-
-        </tr>
-        <tr class="row44">
-            <td class="column9 style172 s style174" colspan="3">Pb<span
-                    style="color:#333399; font-family:'宋体'; font-size:9pt">标况大气压</span></td>
-            <td id="c_44_12" class="column12 style26 s style156" colspan="3">Pb</td>
-
-
-        </tr>
-        <tr class="row45">
+            <td class="column12 style26 s style156" colspan="3">Pf</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row43">
+            <td class="column9 style169 s style171" colspan="3">Tb<span style="color:#333399; font-family:'宋体'; font-size:9pt">标况温度</span></td>
+            <td class="column12 style26 s style156" colspan="3">Tb</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row44">
+            <td class="column9 style172 s style174" colspan="3">Pb<span style="color:#333399; font-family:'宋体'; font-size:9pt">标况大气压</span></td>
+            <td class="column12 style26 s style156" colspan="3">Pb</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row45">
             <td class="column9 style157 s style155" colspan="3">Qv体积流量</td>
-            <td id="c_45_12" class="column12 style26 s style156" colspan="3">C</td>
-
-
-        </tr>
-        <tr class="row46">
-            <td class="column9 style175 s style171" colspan="3"><span
-                    style="color:#333399; font-family:'Arial'; font-size:9pt">Dp</span><span
-                    style="color:#333399; font-family:'宋体'; font-size:9pt">产生差压</span></td>
-            <td id="c_46_12" class="column12 style27 s style196" colspan="3">公式计算结果Dp1</td>
-
-
-        </tr>
-        <tr class="row47">
-            <td id="c_47_9" class="column9 style250 s style252 editable" colspan="3">输入Dp</td>
-            <td id="c_47_12" class="column12 style250 s style253" colspan="3">Qv</td>
-
-
-        </tr>
-        <tr class="row48">
+            <td class="column12 style26 s style156" colspan="3">C</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row46">
+            <td class="column9 style175 s style171" colspan="3"><span style="color:#333399; font-family:'Arial'; font-size:9pt">Dp</span><span style="color:#333399; font-family:'宋体'; font-size:9pt">产生差压</span></td>
+            <td class="column12 style27 s style196" colspan="3">公式计算结果Dp1</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row47">
+            <td class="column9 style250 s style252" colspan="3"><span style="color:#000000; font-family:'宋体'; font-size:12pt">输入</span><span style="color:#000000; font-family:'Arial'; font-size:12pt">Dp</span></td>
+            <td class="column12 style250 s style253" colspan="3"><span style="color:#000000; font-family:'宋体'; font-size:12pt">算出</span><span style="color:#000000; font-family:'Arial'; font-size:12pt">Qv</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row48">
             <td class="column9 style247 null style249" colspan="6"></td>
-
-
-        </tr>
-        <tr class="row49">
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row49">
             <td class="column9 style186 s style186" colspan="3">Process Date 操作时间：</td>
-            <td id="c_49_12" class="column12 style26 s style156" colspan="3">显示实时时间</td>
-
-
-        </tr>
-        <tr class="row50">
-            <td class="column0 style162 s style164" colspan="15"><span
-                    style="color:#000000; font-family:'宋体'; font-size:9pt">本表数据未经标巴书面允许不得扩散至第三方</span><span
-                    style="color:#000000; font-family:'Arial'; font-size:9pt">.</span></td>
-
-        </tr>
+            <td class="column12 style26 s style156" colspan="3">&nbsp;<span style="color:#000000; font-family:'宋体'; font-size:12pt">显示实时时间</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row50">
+            <td class="column0 style162 s style164" colspan="15"><span style="color:#000000; font-family:'宋体'; font-size:9pt">本表数据未经标巴书面允许不得扩散至第三方</span><span style="color:#000000; font-family:'Arial'; font-size:9pt">.</span></td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
+          <tr class="row51">
+            <td class="column0">&nbsp;</td>
+            <td class="column1">&nbsp;</td>
+            <td class="column2">&nbsp;</td>
+            <td class="column3">&nbsp;</td>
+            <td class="column4">&nbsp;</td>
+            <td class="column5">&nbsp;</td>
+            <td class="column6">&nbsp;</td>
+            <td class="column7">&nbsp;</td>
+            <td class="column8">&nbsp;</td>
+            <td class="column9">&nbsp;</td>
+            <td class="column10">&nbsp;</td>
+            <td class="column11">&nbsp;</td>
+            <td class="column12 style2 s">&nbsp;</td>
+            <td class="column13">&nbsp;</td>
+            <td class="column14">&nbsp;</td>
+            <td class="column15">&nbsp;</td>
+            <td class="column16">&nbsp;</td>
+            <td class="column17">&nbsp;</td>
+            <td class="column18">&nbsp;</td>
+            <td class="column19">&nbsp;</td>
+          </tr>
         </tbody>
     </table>
-</div>
-
-</body>
+  </body>
 </html>

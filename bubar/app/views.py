@@ -1,14 +1,18 @@
 import logging
 import json
 
-from django.shortcuts import render, HttpResponse
+from django.utils.safestring import SafeString
+
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
+from django.core import serializers
 
-from .form import gas_dp_form_clean, gas_qv_form_clean
+
+from .form import gas_dp_form_clean, gas_qv_form_clean, serializer_history_operation
 from .steam_functions import get_flow_factor, cal_gas_dp, cal_gas_qv
-from .models import log_history
+from .models import log_history, OperationHistory
 
 logger = logging.getLogger("app")
 
@@ -28,16 +32,27 @@ def handle_gas_dp(request):
             params['pf'], flow_factor, params['tb'], params['pipe_id'])
 
         dp2 = cal_gas_dp(
-            params['tf'], params['mw'], params['flow_rate_c'], params['pb'],
+            params['tf'], params['mw'], params['flow_rate_min'], params['pb'],
             params['pf'], flow_factor, params['tb'], params['pipe_id'])
 
-        l = log_history(flow_type, params['project_name'], params['operator'], params)
-        return HttpResponse(json.dumps(
-            {"dp1": dp1, "dp2": dp2, "pipe_id": params['pipe_id'],
-             "time": timezone.localtime(l.create_time).strftime("%Y-%m-%d %H:%M")}
-        ))
+        l = log_history(
+            flow_type, params['project_name'], params['operator'], params,
+            {'dp1': dp1, 'dp2': dp2}
+        )
+        return HttpResponse(json.dumps({"id": l.id}))
+        # return HttpResponse(json.dumps(
+        #     {"dp1": dp1, "dp2": dp2, "pipe_id": params['pipe_id'],
+        #      "time": timezone.localtime(l.create_time).strftime("%Y-%m-%d %H:%M")}
+        # ))
+        # return redirect("/bubar/gas?id={}".format(l.id))
     else:
-        return render(request, 'gas.html', {})
+        data = {}
+        if 'id' in request.GET:
+            ph = OperationHistory.objects.filter(id=request.GET['id']).first()
+            data = serializer_history_operation(ph) if ph else {}
+        logger.debug(data)
+        data['data'] = SafeString(data)
+        return render(request, 'gas.html', data)
 
 
 @csrf_exempt
@@ -52,7 +67,7 @@ def handle_gas_qv(request):
         flow_factor = get_flow_factor(flow_type, params['pipe_id'])
         qv = cal_gas_qv(
             params['tf'], params['mw'], params['flow_rate_c'], params['pb'],
-            params['pf'], flow_factor, params['tb'], params['pipe_id'])
+            params['pf'], float(flow_factor), params['tb'], params['pipe_id'])
 
         # l = log_history(flow_type, params['project_name'], params['operator'], params)
         return HttpResponse(json.dumps({"qv": qv}))

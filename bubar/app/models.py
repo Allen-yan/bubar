@@ -26,6 +26,7 @@ class OperationHistory(models.Model):
     project_name = models.CharField("项目名称", max_length=100)
     operator = models.CharField("操作员", max_length=100)
     data = models.TextField("操作数据", default={})
+    result = models.TextField("结果", default={})
     create_time = models.DateTimeField("操作时间", auto_now_add=True)
 
     class Meta:
@@ -33,12 +34,13 @@ class OperationHistory(models.Model):
         verbose_name_plural = '操作历史'
 
 
-def log_history(flow_type, project_name, operator, data):
+def log_history(flow_type, project_name, operator, data, result):
     oh = OperationHistory()
     oh.flow_type = flow_type
     oh.project_name = project_name
     oh.operator = operator
     oh.data = json.dumps(data)
+    oh.result = json.dumps(result)
     oh.save()
 
     return oh

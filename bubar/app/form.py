@@ -1,21 +1,26 @@
 import logging
+import json
 
+from django.utils import timezone
 from django import forms
 
 logger = logging.getLogger("app")
 
-class AccountActionForm(forms.Form):
-    comment = forms.CharField(
-        required=False,
-        widget=forms.Textarea,
-    )
-    send_email = forms.BooleanField(
-        required=False,
-    )
 
-    @property
-    def email_subject_template(self):
-        return 'email/account/notification_subject.txt'
+def serializer_history_operation(obj):
+    result = {}
+    for i in vars(obj):
+        if i in ['data', 'result']:
+            tmp = json.loads(getattr(obj, i))
+            result.update(tmp)
+        elif i in ('_state', ):
+            continue
+        elif i == "create_time":
+            result['create_time'] = timezone.localtime(obj.create_time).strftime("%Y-%m-%d %H:%M")
+        else:
+            result[i] = getattr(obj, i)
+
+    return result
 
 
 def _clean_form(form_validator, payload):
