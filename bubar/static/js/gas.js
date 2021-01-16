@@ -105,6 +105,7 @@ $(document).ready(function() {
             $("#c_33_9").text(payload['dp1']);
             $("#c_46_12").text(payload['dp1']);
             $("#c_33_12").text(payload['dp2']);
+            $("#c_38_12").text(payload['flow_factor']);
 
             $("#c_34_9").text(payload['dp1']*0.03);
             $("#c_35_9").text(payload['pipe_id']*10);

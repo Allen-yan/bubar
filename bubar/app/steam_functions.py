@@ -27,12 +27,12 @@ def get_flow_factor(flow_type, pipe_inner_diameter):
     return f.first().factor
 
 
-def cal_gas_dp(tf, mw, qv, pb, pf, f, tb, d):
+def cal_gas_dp(tf, mw, c, pb, pf, f, tb, d):
     tfa = tf + 273.15
     tba = tb + 273.15
     pfa = pf + 101.32
 
-    return tfa * mw * math.pow(qv, 2) * math.pow(pb, 2) \
+    return tfa * mw * math.pow(c, 2) * math.pow(pb, 2) \
            / (pfa * math.pow(f, 2) * math.pow(tba, 2) * math.pow(d, 4))
 
 
@@ -43,3 +43,8 @@ def cal_gas_qv(tf, mw, dp, pb, pf, f, tb, d):
 
     tmp = math.sqrt(dp * pfa / (mw * tfa))
     return f * math.pow(d, 2) * tba * tmp / pb
+
+
+def cal_liquid_dp(tf, gf, qv, pb, pf, f, tb, d):
+
+    return
