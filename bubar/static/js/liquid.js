@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#gas_form").find("input").each(function(){
+    $("#liquid_form").find("input").each(function(){
         $(this).attr("name", $(this).attr("id"));
     });
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
                 $("#flow_rate_nor").val(payload['flow_rate_nor']);
                 $("#flow_rate_max").val(payload['flow_rate_max']);
                 $("#flow_rate_c").val(payload['flow_rate_c']);
-                $("#mw").val(payload['mw']);
+                $("#gf").val(payload['gf']);
                 $("#tb").val(payload['tb']);
                 $("#pb").val(payload['pb']);
                 $("#press_rating").val(payload['press_rating']);
@@ -80,7 +80,7 @@ $(document).ready(function() {
                 $("#c_8_9").text(payload['pipe_material']);
                 $("#c_8_12").text(payload['pipe_direction']);
                 $("#c_10_9").text(payload['pf']);
-                $("#c_42_12").text(payload['pf']);
+//                $("#c_42_12").text(payload['pf']);
                 $("#c_11_9").text(payload['tf']);
                 $("#c_41_12").text(payload['tf']);
                 $("#c_13_7").text(payload['flow_rate_min']);
@@ -89,13 +89,13 @@ $(document).ready(function() {
                 $("#c_13_11").text(payload['flow_rate_max']);
                 $("#c_13_14").text(payload['flow_rate_c']);
                 $("#c_32_9").text(payload['flow_rate_c']);
-                $("#c_45_12").text(payload['flow_rate_c']);
-                $("#c_17_9").text(payload['mw']);
-                $("#c_40_12").text(payload['mw']);
+                $("#c_41_12").text(payload['flow_rate_c']);
+                $("#c_17_9").text(payload['gf']);
+                $("#c_40_12").text(payload['gf']);
                 $("#c_18_9").text(payload['tb']);
-                $("#c_43_12").text(payload['tb']);
+//                $("#c_43_12").text(payload['tb']);
                 $("#c_18_12").text(payload['pb']);
-                $("#c_44_12").text(payload['pb']);
+//                $("#c_44_12").text(payload['pb']);
                 $("#c_22_9").text(payload['press_rating']);
                 $("#c_25_12").text(payload['press_rating']);
                 $("#c_28_9").text(payload['pipe_orientation']);
@@ -105,6 +105,7 @@ $(document).ready(function() {
             $("#c_33_9").text(payload['dp1']);
             $("#c_46_12").text(payload['dp1']);
             $("#c_33_12").text(payload['dp2']);
+            $("#c_38_12").text(payload['flow_factor']);
 
             $("#c_34_9").text(payload['dp1']*0.03);
             $("#c_35_9").text(payload['pipe_id']*10);
@@ -119,11 +120,11 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/bubar/gas" ,
-            data: $('#gas_form').serialize(),
+            url: "/bubar/liquid" ,
+            data: $('#liquid_form').serialize(),
             success: function (result) {
 //                handle_success_form(result, true);
-                  window.location = "/bubar/gas?id=" + result["id"];
+                  window.location = "/bubar/liquid?id=" + result["id"];
 
             },
             error : function(err) {
@@ -133,14 +134,14 @@ $(document).ready(function() {
         });
     });
 
-    $("#cal_qv").click(function (){
+    $("#cal_qm").click(function (){
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/bubar/gas_qv" ,
-            data: $('#gas_form').serialize(),
+            url: "/bubar/liquid_qm" ,
+            data: $('#liquid_form').serialize(),
             success: function (result) {
-                $("#c_47_12").text(result['qv']);
+                $("#c_47_12").text(result['qm']);
             },
             error : function(err) {
                 console.log(err);
@@ -165,8 +166,8 @@ $(document).ready(function() {
     $("#c_13_7").on("focusout",{ele_id: "c_32_12", ele_id2: "flow_rate_min"}, focusoutHandler) ;
     $("#c_13_9").on("focusout",{ele_id: "flow_rate_nor"}, focusoutHandler) ;
     $("#c_13_11").on("focusout",{ele_id: "flow_rate_max"}, focusoutHandler) ;
-    $("#c_13_14").on("focusout",{ele_id1: "c_32_9", ele_id2: "c_45_12", ele_id3: "flow_rate_c"}, focusoutHandler) ;
-    $("#c_17_9").on("focusout",{ele_id: "c_40_12", ele_id2: "mw"}, focusoutHandler) ;
+    $("#c_13_14").on("focusout",{ele_id1: "c_32_9", ele_id2: "c_41_12", ele_id3: "flow_rate_c"}, focusoutHandler) ;
+    $("#c_17_9").on("focusout",{ele_id: "c_40_12", ele_id2: "gf"}, focusoutHandler) ;
     $("#c_18_9").on("focusout",{ele_id: "c_43_12", ele_id2: "tb"}, focusoutHandler) ;
     $("#c_18_12").on("focusout",{ele_id: "c_44_12", ele_id2: "pb"}, focusoutHandler) ;
     $("#c_22_9").on("focusout",{ele_id: "c_25_12", ele_id2: "press_rating"}, focusoutHandler) ;

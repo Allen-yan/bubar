@@ -45,6 +45,10 @@ def cal_gas_qv(tf, mw, dp, pb, pf, f, tb, d):
     return f * math.pow(d, 2) * tba * tmp / pb
 
 
-def cal_liquid_dp(tf, gf, qv, pb, pf, f, tb, d):
+def cal_liquid_dp(qm, gf, f, d):
+    return math.pow(qm, 2) / (gf * math.pow(f, 2) * math.pow(d, 4))
 
-    return
+
+def cal_liquid_qm(f, d, gf, dp):
+    tmp = math.sqrt(gf * dp)
+    return f * math.pow(d, 2) * tmp
