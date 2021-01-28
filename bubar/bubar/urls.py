@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'^bubar/gas_qv$', views.handle_gas_qv),
     url(r'^bubar/liquid$', views.handle_liquid_dp),
     url(r'^bubar/liquid_qm$', views.handle_liquid_qm),
-    url(r'^bubar/steam', views.cal_steam),
-    url(r'^bubar/test', views.test),
+    url(r'^bubar/steam$', views.handle_steam_dp),
+    url(r'^bubar/steam_qm$', views.handle_steam_dp),
 ]

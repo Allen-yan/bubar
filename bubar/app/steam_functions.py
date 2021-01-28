@@ -52,3 +52,12 @@ def cal_liquid_dp(qm, gf, f, d):
 def cal_liquid_qm(f, d, gf, dp):
     tmp = math.sqrt(gf * dp)
     return f * math.pow(d, 2) * tmp
+
+
+def cal_steam_dp(qm, od, f, d):
+    return math.pow(qm, 2) / (od * math.pow(f, 2) * math.pow(d, 4))
+
+
+def cal_steam_qm(f, d, od, dp):
+    tmp = math.sqrt(od * dp)
+    return f * math.pow(d, 2) * tmp

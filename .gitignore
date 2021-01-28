@@ -1,3 +1,9 @@
 .idea
 bubar/logs/*
 bubar/db.sqlite3
+**/**/*.pyc
+
+*/**/__pycache__/*
+
+bubar/app/__pycache__/*
+bubar/bubar/__pycache__/*

@@ -134,6 +134,36 @@ def liquid_dp_form_clean(payload):
     return _clean_form(form_validator, payload)
 
 
+def steam_dp_form_clean(payload):
+    form_validator = {  # key: (type, required)
+        'pipe_id': (float, True),
+        'pf': (float, False),
+        'tf': (float, False),
+        'flow_rate_min': (float, False),
+        'flow_rate_nor': (float, False),
+        'flow_rate_max': (float, False),
+        'flow_rate_c': (float, True),
+        'od': (float, True),
+        'tb': (float, False),
+        'pb': (float, False),
+
+        'project_name': (str, True),
+        'operator': (str, True),
+        'page': (str, True),
+        'fluid': (str, True),
+        'tag_number': (str, True),
+        'pipe_od': (str, True),
+        'pipe_material': (str, True),
+        'pipe_direction': (str, True),
+        'press_rating': (str, True),
+        'pipe_orientation': (str, True),
+        'dp_conn_type': (str, True),
+    }
+
+    return _clean_form(form_validator, payload)
+
+
+
 def liquid_qm_form_clean(payload):
     form_validator = {  # key: (type, required)
         'pipe_id': (float, True),

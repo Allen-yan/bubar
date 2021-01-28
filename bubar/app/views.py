@@ -11,8 +11,9 @@ from django.core import serializers
 
 
 from .form import gas_dp_form_clean, gas_qv_form_clean, serializer_history_operation, \
-    liquid_dp_form_clean, liquid_qm_form_clean
-from .steam_functions import get_flow_factor, cal_gas_dp, cal_gas_qv, cal_liquid_dp, cal_liquid_qm
+    liquid_dp_form_clean, liquid_qm_form_clean, steam_dp_form_clean
+from .steam_functions import get_flow_factor, cal_gas_dp, cal_gas_qv, cal_liquid_dp, cal_liquid_qm, \
+    cal_steam_dp, cal_steam_qm
 from .models import log_history, OperationHistory
 
 logger = logging.getLogger("app")
@@ -124,9 +125,48 @@ def handle_liquid_qm(request):
 
 
 @csrf_exempt
-def cal_steam(request):
-    return render(request, 'steam.html', {})
+def handle_steam_dp(request):
+    flow_type = 'steam'
+    if request.method == "POST":
+        logger.debug("cal dp {} ".format(flow_type))
+        form_validate, params = steam_dp_form_clean(request.POST)
+        if not form_validate:
+            return HttpResponseBadRequest(params)
+
+        flow_factor = get_flow_factor(flow_type, params['pipe_id'])
+        dp1 = cal_steam_dp(params['flow_rate_c'], params['od'], flow_factor, params['pipe_id'])
+
+        dp2 = cal_steam_dp(params['flow_rate_min'], params['od'], flow_factor, params['pipe_id'])
+
+        l = log_history(
+            flow_type, params['project_name'], params['operator'], params,
+            {'dp1': dp1, 'dp2': dp2}, flow_factor
+        )
+        return HttpResponse(json.dumps({"id": l.id}))
+    else:
+        data = {}
+        if 'id' in request.GET:
+            ph = OperationHistory.objects.filter(id=request.GET['id']).first()
+            data = serializer_history_operation(ph) if ph else {}
+        logger.debug(data)
+        data['data'] = SafeString(data)
+        return render(request, 'steam.html', data)
+
 
 @csrf_exempt
-def test(request):
-    return render(request, 'test.html', {})
+def handle_steam_qm(request):
+    flow_type = 'steam'
+    if request.method == "POST":
+        logger.debug("cal qm {} ".format(flow_type))
+        form_validate, params = liquid_qm_form_clean(request.POST)
+        if not form_validate:
+            return HttpResponseBadRequest(params)
+
+        flow_factor = get_flow_factor(flow_type, params['pipe_id'])
+        qm = cal_steam_qm(float(flow_factor), params['pipe_id'],  params['od'], params['dp'])
+
+        # l = log_history(flow_type, params['project_name'], params['operator'], params)
+        return HttpResponse(json.dumps({"qm": qm}))
+    else:
+        return HttpResponse({})
+
