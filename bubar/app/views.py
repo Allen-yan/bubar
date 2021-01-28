@@ -11,7 +11,7 @@ from django.core import serializers
 
 
 from .form import gas_dp_form_clean, gas_qv_form_clean, serializer_history_operation, \
-    liquid_dp_form_clean, liquid_qm_form_clean, steam_dp_form_clean
+    liquid_dp_form_clean, liquid_qm_form_clean, steam_dp_form_clean, steam_qm_form_clean
 from .steam_functions import get_flow_factor, cal_gas_dp, cal_gas_qv, cal_liquid_dp, cal_liquid_qm, \
     cal_steam_dp, cal_steam_qm
 from .models import log_history, OperationHistory
@@ -158,7 +158,7 @@ def handle_steam_qm(request):
     flow_type = 'steam'
     if request.method == "POST":
         logger.debug("cal qm {} ".format(flow_type))
-        form_validate, params = liquid_qm_form_clean(request.POST)
+        form_validate, params = steam_qm_form_clean(request.POST)
         if not form_validate:
             return HttpResponseBadRequest(params)
 

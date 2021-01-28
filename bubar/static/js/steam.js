@@ -87,8 +87,8 @@ $(document).ready(function() {
                 $("#c_13_14").text(payload['flow_rate_c']);
                 $("#c_32_9").text(payload['flow_rate_c']);
                 $("#c_41_12").text(payload['flow_rate_c']);
-//                $("#c_17_9").text(payload['gf']);
-//                $("#c_40_12").text(payload['gf']);
+                $("#c_14_9").text(payload['od']);
+                $("#c_40_12").text(payload['od']);
                 $("#c_18_9").text(payload['tb']);
 //                $("#c_43_12").text(payload['tb']);
 //                $("#c_18_12").text(payload['pb']);
@@ -117,11 +117,11 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/bubar/liquid" ,
-            data: $('#liquid_form').serialize(),
+            url: "/bubar/steam" ,
+            data: $('#steam_form').serialize(),
             success: function (result) {
 //                handle_success_form(result, true);
-                  window.location = "/bubar/liquid?id=" + result["id"];
+                  window.location = "/bubar/steam?id=" + result["id"];
 
             },
             error : function(err) {
@@ -135,8 +135,8 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/bubar/liquid_qm" ,
-            data: $('#liquid_form').serialize(),
+            url: "/bubar/steam_qm" ,
+            data: $('#steam_form').serialize(),
             success: function (result) {
                 $("#c_47_12").text(result['qm']);
             },
@@ -164,7 +164,7 @@ $(document).ready(function() {
     $("#c_13_9").on("focusout",{ele_id: "flow_rate_nor"}, focusoutHandler) ;
     $("#c_13_11").on("focusout",{ele_id: "flow_rate_max"}, focusoutHandler) ;
     $("#c_13_14").on("focusout",{ele_id1: "c_32_9", ele_id2: "c_41_12", ele_id3: "flow_rate_c"}, focusoutHandler) ;
-    $("#c_17_9").on("focusout",{ele_id: "c_40_12", ele_id2: "gf"}, focusoutHandler) ;
+    $("#c_14_9").on("focusout",{ele_id: "c_40_12", ele_id2: "od"}, focusoutHandler) ;
     $("#c_18_9").on("focusout",{ele_id: "c_43_12", ele_id2: "tb"}, focusoutHandler) ;
     $("#c_18_12").on("focusout",{ele_id: "c_44_12", ele_id2: "pb"}, focusoutHandler) ;
     $("#c_22_9").on("focusout",{ele_id: "c_25_12", ele_id2: "press_rating"}, focusoutHandler) ;
