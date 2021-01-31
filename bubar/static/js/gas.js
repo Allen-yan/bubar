@@ -175,4 +175,50 @@ $(document).ready(function() {
     $("#c_28_12").on("focusout",{ele_id: "dp_conn_type"}, focusoutHandler) ;
     $("#c_47_9").on("focusout",{ele_id: "dp"}, focusoutHandler) ;
 
+    // pdf
+    var form = $('#sheet0'),
+    cache_width = form.width(),
+     a4 = [640, 1067]; // for a4 size paper width and height
+
+    $('#create_pdf').on('click', function () {
+        $('body').scrollTop(0);
+        createPDF();
+    });
+
+    //create pdf
+    function createPDF() {
+        getCanvas().then(function (canvas) {
+             var context = canvas.getContext('2d');
+             context.mozImageSmoothingEnabled = false;
+             context.webkitImageSmoothingEnabled = false;
+             context.msImageSmoothingEnabled = false;
+             context.imageSmoothingEnabled = false;
+
+             var
+             img = canvas.toDataURL("image/png", 1),
+             doc = new jsPDF({
+                 orientation: 'p',
+                precision: '12',
+                floatPrecision: "smart", // default is 16
+
+                 unit: 'pt',
+                 format: 'a4'
+             });
+
+            doc.addImage(img, 'png', 20, 10);
+            doc.save('gas.pdf');
+            form.width(cache_width);
+        });
+   }
+
+    // create canvas object
+    function getCanvas() {
+        form.width((a4[0] * 1.22) -30).css('max-width', 'none');
+
+        return html2canvas(form, {
+            imageTimeout: 2000,
+            removeContainer: true,
+            scale: 0.78125
+        });
+    }
 });

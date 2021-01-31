@@ -7,3 +7,5 @@ bubar/db.sqlite3
 
 bubar/app/__pycache__/*
 bubar/bubar/__pycache__/*
+
+*/**/*.pdf
