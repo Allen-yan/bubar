@@ -2,6 +2,8 @@
 <html>
 <script type="text/javascript" charset="utf8" src="/static/js/jquery-3.5.1.js"></script>
 <script type="text/javascript" charset="utf8" src="/static/js/liquid.js"></script>
+<script type="text/javascript" charset="utf8" src="/static/js/jspdf-1.3.5.min.js"></script>
+
 <script type="text/javascript" charset="utf8" >
 
     var init_data = {{ data }};
@@ -601,6 +603,7 @@ body { margin-left: 0in; margin-right: 0in; margin-top: 0.31in; margin-bottom: 0
     <form id="liquid_form" onsubmit="return false" action="##" method="post">
         <input type="button" id="cal_dp" value="Dp">
         <input type="button" id="cal_qm" value="Qm">
+        <input type="button" id="create_pdf" value="Generate PDF">
         <input type="hidden" id="project_name" />
         <input type="hidden" id="operator" />
         <input type="hidden" id="page"/>
