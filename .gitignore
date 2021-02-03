@@ -1,5 +1,5 @@
 .idea
-bubar/logs/*
+bubar/logs/*.logs
 bubar/db.sqlite3
 **/**/*.pyc
 
